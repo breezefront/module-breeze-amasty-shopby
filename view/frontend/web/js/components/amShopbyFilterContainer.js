@@ -75,6 +75,57 @@ define([
                 }
             });
         },
+        
+        /*
+        * @param {String} text
+        */
+        openFilterBlock: function (attr) {
+            const selector = '.filter-options-item.filter-' + attr;
+            // open on first load
+            this.forceOpenFilter(selector);
+
+            // observe sidebar for replacement (Amasty AJAX)
+            const sidebar = document.querySelector('.sidebar.sidebar-main, .sidebar-main');
+            if (!sidebar) return;
+
+            const observer = new MutationObserver((mutations) => {
+                if ($(selector).length) {                    
+                    this.forceOpenFilter(selector);
+                }
+            });
+
+            observer.observe(sidebar, {
+                childList: true,
+                subtree: true,
+            });
+        },
+
+        /**         
+         * @return {void}
+         */
+        forceOpenFilter: function (selector) {
+            const filterBlock = $(selector);
+            if (!filterBlock.length) return;
+
+            const title = filterBlock.children('.filter-options-title');
+            // if option has selected values return - should be opened
+            const hasSelected = filterBlock.find('input:checked').length > 0 || filterBlock.find('a.amshopby-link-selected').length > 0;
+            if (!hasSelected) return;
+
+            // if option is alredy opened
+            const isOpen = !filterBlock.hasClass('collapsed') && title.attr('aria-expanded') === 'true';
+            if (isOpen) return;
+
+            // use magento jQuery collapsible
+            if (filterBlock.data('mageCollapsible')) {
+                filterBlock.collapsible('activate');
+                return;
+            }
+
+            // or fallback
+            // some options require extra trigger 
+            title.trigger('click');
+        },
 
         /**
          * @public
@@ -228,6 +279,7 @@ define([
             var name = filter.attribute,
                 value = filter.value,
                 block;
+            this.openFilterBlock(name); // reopen option that being activated
 
             if (this.checkIfValueNotExist(name, value)) {
                 block = $(this.selectors.filterLayeredBock);
