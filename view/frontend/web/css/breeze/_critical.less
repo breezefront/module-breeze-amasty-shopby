@@ -1,0 +1,39 @@
+@import 'Amasty_Shopby::css/source/module/frontend/_base.less';
+@import 'Amasty_Shopby::css/source/module/frontend/components/_filter-type-slider.less';
+@import 'Amasty_Shopby::css/source/module/frontend/components/_filter-type-items.less';
+@import 'Amasty_Shopby::css/source/module/frontend/components/_filter-fly-out.less';
+@import 'Amasty_Shopby::css/source/module/frontend/components/_inputs.less';
+@import 'Amasty_Shopby::css/source/module/frontend/components/_show-button.less';
+@import 'Amasty_Shopby::css/source/module/frontend/components/_loader.less';
+@import 'Amasty_Shopby::css/source/module/frontend/components/_swatch-tooltip.less';
+
+#amasty-shopby-product-list {
+    margin: 0;
+}
+
+.block.filter {
+    .amshopby-filter-current {
+        .filter-current-subtitle {
+            cursor: text !important;
+            margin-bottom: 5px;
+            &::after {
+                display: none;
+            }
+        }
+        &.filter-current .amshopby-button-wrap {
+            display: none;
+        }
+    }
+
+    @media @media-md {
+        .column.main & {
+            .filter-current .amshopby-item {
+                .padding-left(@5);
+                .amshopby-remove {
+                    .left(@1-5);
+                    .right(auto);
+                }
+            }
+        }
+    }
+}

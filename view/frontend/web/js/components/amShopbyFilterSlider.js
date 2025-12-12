@@ -361,6 +361,7 @@ define([
                 firstElement = $(element).find(handle + ':first-of-type ' + tooltip),
                 lastElement = $(element).find(handle + ':last-of-type ' + tooltip);
 
+            return; // Breeze
             if (!this._isNotDefaultSlider()) {
                 return;
             }

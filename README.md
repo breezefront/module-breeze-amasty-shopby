@@ -8,5 +8,5 @@ The price slider supports only the `Default` style.
 
 ```bash
 composer require swissup/module-breeze-amasty-shopby
-bin/magento setup:upgrade --safe-mode=1
+bin/magento module:enable Swissup_BreezeAmastyShopby
 ```
