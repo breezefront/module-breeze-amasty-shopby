@@ -53,6 +53,4 @@ define([
             return this._super(event, ...data);
         }
     });
-
-    return $.mage.amShopbyFilterSlider;
 });

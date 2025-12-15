@@ -8,6 +8,4 @@ define([
             this._super(event, ...values);
         }
     });
-
-    return $.mage.amShopbyFilterFromTo;
 });
