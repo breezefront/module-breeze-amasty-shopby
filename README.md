@@ -1,6 +1,6 @@
 # Amasty Shopby Integration
 
-Tested on Improved Layered Navigation by Amasty 4.0.0.
+Tested on Improved Layered Navigation by Amasty 4.0.2.
 
 The price slider supports only the `Default` style.
 
