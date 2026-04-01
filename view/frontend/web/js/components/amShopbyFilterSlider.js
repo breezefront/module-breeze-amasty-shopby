@@ -26,16 +26,19 @@ define([
                 }, 500),
                 mainColor = this.options.colors.main || '#000000',
                 toRangeSliderColor = hexOrRgb => {
+                    let rgb;
                     if (hexOrRgb.startsWith('#')) {
-                        hexOrRgb
+                        rgb = hexOrRgb
                             .replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, (m, r, g, b) => '#' + r + r + g + g + b + b)
                             .substring(1).match(/.{2}/g)
                             .map(x => parseInt(x, 16));
                     } else if (hexOrRgb.startsWith('rgb')) {
-                        return hexOrRgb.match(/\d+/g).map(Number);
+                        rgb = hexOrRgb.match(/\d+/g).map(Number);
                     } else {
-                        return [0, 0, 0];
+                        rgb = [0, 0, 0];
                     }
+                    
+                    return `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
                 };
 
             this.slider.hide();
