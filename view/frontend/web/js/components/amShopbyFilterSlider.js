@@ -43,7 +43,7 @@ define([
 
             this.slider.hide();
 
-            range.attr('style', '--thumb-bg:' + toRangeSliderColor(mainColor).join(' '));
+            range.attr('style', '--thumb-bg:' + toRangeSliderColor(mainColor));
 
             range
                 .attr('min', minPrice)
